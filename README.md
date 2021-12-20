@@ -30,4 +30,4 @@ Purpose: The purpose of this repository is to track all data updates associated 
 1. [Long Term Outlook 2021](https://github.com/aangelsalazarr/EIA-Outlook-R-Analysis/blob/main/long_term_outlook_2021.md)
 2. [Short Term Outlook 2021](https://github.com/aangelsalazarr/EIA-Outlook-R-Analysis/blob/main/short_term_outlook.md)
 3. International Outlook 2021
-4. [Electricity]()
+4. [Electricity](https://github.com/aangelsalazarr/EIA-Outlook-R-Analysis/blob/main/eia_electricity.md)
