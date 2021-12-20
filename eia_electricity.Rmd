@@ -2,7 +2,7 @@
 title: "EIA Data Retrieval - Electricity"
 author: "Angel Salazar"
 date: "12/16/2021"
-output: gitihub_document
+output: github_document
 ---
 
 ***
@@ -43,9 +43,8 @@ select(us_electricity_net, data) %>% unnest(cols = data)
 filter(unnest(us_electricity_net, cols = data), year >= 2020) %>%
   ggplot(aes(x = date, 
              y = value)) + 
-  scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
-  geom_line() +
-  labs(y = x$units[1], 
+  scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) + geom_line() +
+  labs(y = us_electricity_net$units[1], 
        title = "US Electricity Generation, Net (Monthly)", 
        subtitle = "From all fuels") +
   geom_smooth(method = lm) # linear model 
@@ -69,7 +68,7 @@ filter(unnest(us_retail_sales_electricity, cols = data), year >= 2020) %>%
   ggplot(aes(x = date, y = value)) + 
   scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
   geom_line() +
-  labs(y = x$units[1], 
+  labs(y = us_retail_sales_electricity$units[1], 
        title = "US Retail Sales of Electricty (Monthly)", 
        subtitle = "All Sectors") + 
   geom_smooth(method = lm) #linear model
@@ -94,7 +93,7 @@ filter(unnest(us_electricity_price, cols = data), year >= 2020) %>%
              y = value)) + 
   scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
   geom_line() +
-  labs(y = x$units[1], 
+  labs(y = us_electricity_price$units[1], 
        title = "US Average Retail Price of Electricity (Monthly)") +
   geom_smooth(method = lm) # linear model 
 
@@ -119,7 +118,7 @@ filter(unnest(us_fossil_cost, cols = data), year >= 2020) %>%
              y = value)) + 
   scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
   geom_line() +
-  labs(y = x$units[1], 
+  labs(y = us_fossil_cost$units[1], 
        title = "US Average Cost of Fossil Fuels for Electricity Generation, Natural Gas (Monthly)") +
   geom_smooth(method = lm) # linear model 
 
