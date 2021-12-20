@@ -5,34 +5,42 @@ Angel Salazar
 
 ``` r
 # carbon dioxide emissions, commercial, reference 2021
-ems_commercial_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon dioxide emissions, electric power, reference 2021
-ems_electricity_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, reference 2021
-ems_industrial_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, reference 2021
 ems_per_capita_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, reference 2021
-ems_residential_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, reference 2021
-ems_transportation_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_transportation_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, reference 2021
-ems_coal_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, reference 2021
-ems_ng_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, reference 2021
 ems_other_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, reference 2021
-ems_petro_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_ref <- eia_series(id = "AEO.2021.REF2021.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
@@ -111,34 +119,42 @@ sector_emissions %>%
 
 ``` r
 # carbon dioxide emissions, commercial, high growth 2021
-ems_commercial_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A" )
+ems_commercial_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, high growth 2021
-ems_electricity_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, high growth 2021
-ems_industrial_high_g <- eia_series(id ="AEO.2021.HIGHMACRO.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_high_g <- eia_series(id ="AEO.2021.HIGHMACRO.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, high growth 2021
 ems_per_cap_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, high growth 2021
-ems_residential_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, high growth 2021
-ems_trans_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, high growth, 2021
-ems_coal_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, high growth, 2021
-ems_ng_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, high growth 2021
 ems_other_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, high growth 2021
-ems_petro_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_high_g <- eia_series(id = "AEO.2021.HIGHMACRO.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
@@ -217,226 +233,282 @@ sector_emissions_high_g %>%
 
 ``` r
 # carbon dioxide emissions, commercial, low growth 2021
-ems_commercial_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, low growth 2021
-ems_electricity_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, low growth 2021
-ems_industrial_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, low growth 2021
 ems_per_cap_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, low growth 2021
-ems_residential_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, low growth 2021
-ems_trans_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, low growth, 2021
-ems_coal_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, low growth, 2021
-ems_ng_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, low growth 2021
 ems_other_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, low growth 2021
-ems_petro_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_low_g <- eia_series(id = "AEO.2021.LOWMACRO.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
 # carbon dioxide emissions, commercial, high price2021
-ems_commercial_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, high price 2021
-ems_electricity_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, high price 2021
-ems_industrial_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, high price 2021
 ems_per_cap_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, high price 2021
-ems_residential_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, high price 2021
-ems_trans_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, high price, 2021
-ems_coal_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, high price, 2021
-ems_ng_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, high price 2021
 ems_other_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, high price 2021
-ems_petro_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_high_p <- eia_series(id = "AEO.2021.HIGHPRICE.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
 # carbon dioxide emissions, commercial, low price 2021
-ems_commercial_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, low price 2021
-ems_electricity_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, low price 2021
-ems_industrial_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, low price 2021
 ems_per_cap_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, low price 2021
-ems_residential_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, low price 2021
-ems_trans_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, low price, 2021
-ems_coal_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, low price, 2021
-ems_ng_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, low price 2021
 ems_other_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, low price 2021
-ems_petro_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_low_p <- eia_series(id = "AEO.2021.LOWPRICE.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
 # carbon dioxide emissions, commercial, high ff supply 2021
-ems_commercial_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, high ff supply 2021
-ems_electricity_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, high ff supply 2021
-ems_industrial_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, high ff supply2021
 ems_per_cap_high_ff_s<- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, high ff supply 2021
-ems_residential_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, high ff supply2021
-ems_trans_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, high ff supply, 2021
-ems_coal_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, high ff supply 2021
-ems_ng_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, high ff supply 2021
 ems_other_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, high ff supply 2021
-ems_petro_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_high_ff_s <- eia_series(id = "AEO.2021.HIGHOGS.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")%>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
 # carbon dioxide emissions, commercial, low ff supply 2021
-ems_commercial_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, low ff supply 2021
-ems_electricity_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, low ff supply 2021
-ems_industrial_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, low ff supply2021
 ems_per_cap_low_ff_s<- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, low ff supply 2021
-ems_residential_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, low ff supply2021
-ems_trans_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, low ff supply, 2021
-ems_coal_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, low ff supply 2021
-ems_ng_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, low ff supply 2021
 ems_other_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, low ff supply 2021
-ems_petro_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_low_ff_s <- eia_series(id = "AEO.2021.LOWOGS.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
 # carbon dioxide emissions, commercial, high renewable cost 2021
-ems_commercial_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, high renewable cost 2021
-ems_electricity_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, high renewable cost 2021
-ems_industrial_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, high renewable cost 2021
 ems_per_cap_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, high renewable cost 2021
-ems_residential_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, high renewable cost 2021
-ems_trans_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, high renewable cost, 2021
-ems_coal_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, high renewable cost 2021
-ems_ng_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, high renewable cost2021
 ems_other_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, high renewable cost 2021
-ems_petro_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_high_rc <- eia_series(id = "AEO.2021.HIRENCST.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
 # carbon dioxide emissions, commercial, low renewable cost 2021
-ems_commercial_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_commercial_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_COMM_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Commercial")
 
 # carbon emissions, electric power, low renewable cost 2021
-ems_electricity_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_electricity_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_ELEP_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Electricity")
 
 # carbon emissions, industrial, low renewable cost 2021
-ems_industrial_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_industrial_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_IDAL_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Industrial")
 
 # per capita carbon emissions, US, low renewable cost 2021
 ems_per_cap_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_NA_NA_NA_NA_NA_MILLMTCO2PP.A")
 
 # carbon emissions, residential, low renewable cost 2021
-ems_residential_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_residential_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_RESD_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Residential")
 
 # carbon emissions, transportation, low renewable cost 2021
-ems_trans_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A")
+ems_trans_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TRN_NA_NA_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Transportation")
 
 # carbon emissions, coal, low renewable cost, 2021
-ems_coal_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A")
+ems_coal_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TEN_NA_CL_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Coal")
 
 # carbon emissions, natural gas, low renewable cost 2021
-ems_ng_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A")
+ems_ng_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TEN_NA_NG_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Natural Gas")
 
 # carbon emissions, other, low renewable cost2021
 ems_other_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TEN_NA_OTH_NA_NA_MILLMETNCO2.A")
 
 # carbon emissions, petroleum, low renewable cost 2021
-ems_petro_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A")
+ems_petro_low_rc <- eia_series(id = "AEO.2021.LORENCST.EMI_CO2_TEN_NA_PET_NA_NA_MILLMETNCO2.A") %>%
+  mutate(sector = "Petroleum")
 ```
 
 ``` r
@@ -505,7 +577,7 @@ a_merged <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), a) %>%
   unnest(cols = data)
 
 b_merged <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), b) %>%
-  mutate(scenario = "High Econbomic Growth") %>%
+  mutate(scenario = "High Economic Growth") %>%
   unnest(cols = data)
   
 c_merged <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), c) %>%
@@ -513,11 +585,11 @@ c_merged <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), c) %>%
   unnest(cols = data)
 
 d_merged <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), d) %>%
-  mutate(scenario = "High Price") %>%
+  mutate(scenario = "High Oil Price") %>%
   unnest(cols = data)
 
 e_merged <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), e) %>%
-  mutate(scenario = "Low Price") %>%
+  mutate(scenario = "Low Oil Price") %>%
   unnest(cols = data)
 
 f_merged <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), f) %>%
@@ -614,7 +686,41 @@ master_df %>%
   ggplot(aes(x = date, y= value, color = scenario)) +
   geom_line() + 
   scale_x_date(breaks = scales::pretty_breaks(n = 10)) + 
-  labs(x = "Year", y = master_df$units[1], title = "US Per Capita CO2 Emissions")
+  labs(x = "Year", y = "MMmtCO2/capita", title = "US Per-Capita CO2 Emissions", 
+       subtitle = "Various Scenarios", 
+       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
 ```
 
 ![](long_term_outlook_2021_files/figure-gfm/visualizing%20our%20new%20master%20df-5.png)<!-- -->
+
+``` r
+master_df %>%
+  filter(str_detect(name, "Commercial|Industrial|Residential|Transportation")) %>%
+  filter(scenario == c("High Economic Growth", "Low Economic Growth", "Reference")) %>%
+  ggplot(aes(x = date, y = value, color = scenario)) +
+  geom_line() +
+  facet_wrap(vars(sector)) +
+  theme(legend.position = "bottom") +
+  labs(x = "Date", y = master_df$units,
+       title = "US Sector CO2 Emissions", 
+       subtitle = "Economic Growth Scenarios",
+       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
+```
+
+![](long_term_outlook_2021_files/figure-gfm/visualizing%20sector%20emissions%20based%20on%20economic%20growth-1.png)<!-- -->
+
+``` r
+master_df %>%
+  filter(str_detect(name, "Coal|Natural Gas|Petroleum")) %>%
+  filter(scenario == c("High Economic Growth", "Low Economic Growth", "Reference")) %>%
+  ggplot(aes(x = date, y = value, color = scenario)) +
+  geom_line() +
+  facet_wrap(vars(sector)) +
+  theme(legend.position = "bottom") +
+  labs(x = "Date", y = master_df$units,
+       title = "US CO2 Emissions by Fuel Type", 
+       subtitle = "Economic Growth Scenarios",
+       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
+```
+
+![](long_term_outlook_2021_files/figure-gfm/plot%20fuel%20emissions%20based%20on%20economic%20growth-1.png)<!-- -->
