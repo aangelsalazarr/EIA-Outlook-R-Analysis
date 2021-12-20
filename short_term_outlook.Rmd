@@ -1,0 +1,156 @@
+---
+title: "Short-Term Energy Outlook"
+author: "Angel Salazar"
+date: "12/17/2021"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Energy Information Administration Package Managers
+## first we want to install and load package, "eia"
+## this will allow us to run eia_set_key("yourkey") in the future
+library(eia)
+library(EIAdata)
+
+## other libraries we may need for data analysis
+library(ggplot2)
+library(tidyr)
+library(rjson)
+library(dplyr)
+
+```
+
+***
+
+```{r us cpi}
+# SHORT TERM ENERGY OUTLOOK -> US PRICES -> MACROECONOMIC PRICE INDICES
+us_cpi <- eia_series(id = "STEO.CICPIUS.M")
+
+# viewing structure of data
+str(us_cpi$data)
+
+# unnesting columns 
+select(us_cpi, data) %>% unnest(cols = data)
+
+# graphing our data
+filter(unnest(us_cpi, cols = data), year >= 2018) %>%
+  ggplot(aes(x = date, 
+             y = value)) + 
+  scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
+  geom_line() +
+  labs(y = "Index",
+       x = "Date",
+       title = "US Consumer Price Index (Monthly)", 
+       subtitle = "All Urban Consumers") +
+  geom_smooth(method = lm) # linear model 
+
+```
+
+***
+
+```{r us petroleum prices - crude oil}
+# brent crude oil spot price
+brent_oil_spot <- eia_series(id = "STEO.BREPUUS.M")
+
+# imported crude oil price
+imported_oil_price <- eia_series(id = "STEO.RAIMUUS.M")
+
+# refiner average crude oil acquisition cost
+refiner_acquisition_cost <- eia_series(id = "STEO.RACPUUS.M")
+
+# west texas intermediate crude oil price
+wti_oil_price <- eia_series(id = "STEO.WTIPUUS.M")
+
+# joining our data frames
+crude_oil_prices <- merge(merge(merge(brent_oil_spot, 
+                          imported_oil_price, all = TRUE),  
+                          refiner_acquisition_cost, all = TRUE),
+                          wti_oil_price, all = TRUE)
+
+
+# checking out structure of merged data
+str(crude_oil_prices$data)
+
+# making sure our data is well unnested
+crude_oil_prices_new <- crude_oil_prices %>%
+  unnest(cols = data)
+
+# checking to see if we have unnested our dataframe
+head(crude_oil_prices_new)
+
+# graphing our data
+crude_oil_prices_new %>%
+  filter(year >= 2021) %>%
+  ggplot(aes(x = date, 
+             y = value, 
+             color = name)) +
+  scale_x_date(breaks = scales::pretty_breaks(n = 10)) +
+  geom_line() +
+  labs(x = "Date", 
+       y = "$ per Barrel", title = "US Crude Oil Prices", 
+       subtitle = "Monthly") +
+  theme(legend.position = "bottom", 
+        legend.title = element_blank(), 
+        axis.text.x = element_text(angle = 0)) + 
+  scale_color_discrete(labels = c("Brent Crude Oil", 
+                                  "Imported Crude Oil", 
+                                 "Refiner Average Crude Oil Acquisition Cost", 
+                                 "WTI Crude Oil"))
+
+
+```
+
+***
+
+```{r us natural gas prices by sector}
+# retail price of natural gas in the residential sector US average
+gas_price_residential <- eia_series(id = "STEO.NGRCUUS.M")
+
+# retail price of natural gas in commercial sector US average
+gas_price_commercial <- eia_series(id = "STEO.NGCCUUS.M")
+
+# retail price of natural gas in industrial sector US average
+gas_price_industrial <- eia_series(id = "STEO.NGICUUS.M")
+
+# joining our data frames
+gas_prices <- merge(merge(gas_price_residential, 
+                                gas_price_commercial, 
+                          all = TRUE),
+                          gas_price_industrial, 
+                    all = TRUE)
+
+# check out structure of our data
+str(gas_prices)
+
+# making sure our data is unnested 
+gas_prices_new <- gas_prices %>%
+  unnest(cols = data)
+
+# checking first few data points
+head(gas_prices_new)
+
+# graphing our data
+gas_prices_new %>%
+  filter(year >= 2021) %>%
+  ggplot(aes(x = date, 
+             y = value, 
+             color = name)) +
+  scale_x_date(breaks = scales::pretty_breaks(n = 10)) +
+  geom_line() +
+  labs(x = "Date", 
+       y = "$ per thousand cubic feet", 
+       title = "Retail Price of Natural Gas, US Average", 
+       subtitle = "by sector") +
+  theme(legend.position = "bottom", 
+        legend.title = element_blank(), 
+        axis.text.x = element_text(angle = 0)) + 
+  scale_color_discrete(labels = c("Commerical", 
+                                  "Industrial", 
+                                 "Residential"))
+
+
+
+```
+

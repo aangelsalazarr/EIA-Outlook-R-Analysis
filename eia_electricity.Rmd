@@ -1,0 +1,127 @@
+---
+title: "EIA Data Retrieval - Electricity"
+author: "Angel Salazar"
+date: "12/16/2021"
+output: gitihub_document
+---
+
+***
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Energy Information Administration Package Managers
+## first we want to install and load package, "eia"
+## this will allow us to run eia_set_key("yourkey") in the future
+library(eia)
+library(EIAdata)
+
+## other libraries we may need for data analysis
+library(ggplot2)
+library(tidyr)
+library(rjson)
+library(dplyr)
+
+```
+
+***
+
+```{r us electricity generation}
+# function used to show main categories
+eia_cats()
+
+# EIA_DATA_SETS -> ELECTRICITY -> NET GENERATION
+us_electricity_net <- eia_series(id = "ELEC.GEN.ALL-US-99.M") 
+
+# viewing structure of data
+str(us_electricity_net$data)
+
+# unnesting columns 
+select(us_electricity_net, data) %>% unnest(cols = data)
+
+# graphing our data
+filter(unnest(us_electricity_net, cols = data), year >= 2020) %>%
+  ggplot(aes(x = date, 
+             y = value)) + 
+  scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
+  geom_line() +
+  labs(y = x$units[1], 
+       title = "US Electricity Generation, Net (Monthly)", 
+       subtitle = "From all fuels") +
+  geom_smooth(method = lm) # linear model 
+```
+
+***
+
+```{r us electricity retail sales}
+# EIA DATA SETS -> ELECTRICITY -> RETAIL SALES OF ELECTRICITY
+us_retail_sales_electricity <- eia_series(id = "ELEC.SALES.US-ALL.M")
+
+# viewing structure of data
+str(us_retail_sales_electricity$data)
+
+# first few data points
+head(us_retail_sales_electricity$data)
+
+
+# visualizing our data and applying linear method
+filter(unnest(us_retail_sales_electricity, cols = data), year >= 2020) %>%
+  ggplot(aes(x = date, y = value)) + 
+  scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
+  geom_line() +
+  labs(y = x$units[1], 
+       title = "US Retail Sales of Electricty (Monthly)", 
+       subtitle = "All Sectors") + 
+  geom_smooth(method = lm) #linear model
+
+```
+
+***
+
+```{r average price of electricity}
+# EIA DATA SETS -> ELECTRICITY -> AVERAGE RETAIL PRICE OF ELECTRICITY
+us_electricity_price <- eia_series(id = "ELEC.PRICE.US-ALL.M")
+
+# viewing structure of data
+str(us_electricity_price$data)
+
+# unnesting columns 
+select(us_electricity_price, data) %>% unnest(cols = data)
+
+# graphing our data
+filter(unnest(us_electricity_price, cols = data), year >= 2020) %>%
+  ggplot(aes(x = date, 
+             y = value)) + 
+  scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
+  geom_line() +
+  labs(y = x$units[1], 
+       title = "US Average Retail Price of Electricity (Monthly)") +
+  geom_smooth(method = lm) # linear model 
+
+
+```
+
+***
+
+```{r fossil fuel cost for electric generation}
+# EIA DATA SETS -> ELECTRICITY -> AVERAGE RETAIL PRICE OF ELECTRICITY
+us_fossil_cost <- eia_series(id = "ELEC.COST.NG-US-99.M")
+
+# viewing structure of data
+str(us_fossil_cost$data)
+
+# unnesting columns 
+select(us_fossil_cost, data) %>% unnest(cols = data)
+
+# graphing our data
+filter(unnest(us_fossil_cost, cols = data), year >= 2020) %>%
+  ggplot(aes(x = date, 
+             y = value)) + 
+  scale_x_date(date_label = "%m-%y", breaks = scales::pretty_breaks(n = 10)) +
+  geom_line() +
+  labs(y = x$units[1], 
+       title = "US Average Cost of Fossil Fuels for Electricity Generation, Natural Gas (Monthly)") +
+  geom_smooth(method = lm) # linear model 
+
+```
+
