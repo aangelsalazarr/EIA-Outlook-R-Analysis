@@ -23,6 +23,7 @@ Purpose: The purpose of this repository is to track all data updates associated 
 **Resources**
 
 1. [Energy Information Agency (EIA)](https://www.eia.gov/opendata/)
+2. [EIA Annual Outlook 2021](https://www.eia.gov/outlooks/aeo/)
 
 ***
 
