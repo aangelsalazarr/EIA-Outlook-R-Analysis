@@ -9,9 +9,9 @@ Purpose: The purpose of this repository is to track all data updates associated 
 ***
 
 **Libraries Used**
-- eia
-- EIAdata
-- ggplot2
+- [eia](https://cran.r-project.org/web/packages/eia/index.html)
+- [EIAdata](https://cran.r-project.org/web/packages/EIAdata/index.html)
+- [ggplot2](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)
 - tidyr
 - rjson
 - dplyr
