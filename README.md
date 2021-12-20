@@ -9,10 +9,14 @@ Purpose: The purpose of this repository is to track all data updates associated 
 ***
 
 **Libraries Used**
-- requests
-- pandas
-- maplotlib
-- numpy
+- eia
+- EIAdata
+- ggplot2
+- tidyr
+- rjson
+- dplyr
+- tidyverse
+- reshape2
 
 ***
 
