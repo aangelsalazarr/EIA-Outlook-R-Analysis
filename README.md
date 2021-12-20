@@ -22,7 +22,7 @@ Purpose: The purpose of this repository is to track all data updates associated 
 
 **Resources**
 
-1. [Energy Information Agency (EIA)](https://www.eia.gov/)
+1. [Energy Information Agency (EIA)](https://www.eia.gov/opendata/)
 
 ***
 
@@ -34,12 +34,12 @@ Step 1: Register for an API Key [here](https://www.eia.gov/opendata/register.php
 
 Step 2: Load 'eia' r package into your R Session   
 
-Step 3: Run the following code
-    - eia_set_key(key = "your_key_here", store = "sysenv")   
+Step 3: Run the following code   
+eia_set_key(key = "your_key_here", store = "sysenv")   
     
-Step 4: Run the following code to check if you successfully set your API Key for the R Session
-    - eia_get_key()
-    - result should be your "API_KEY"   
+Step 4: Run the following code to check if you successfully set your API Key for the R Session   
+eia_get_key()   
+result should be your "API_KEY"   
     
 
 ***
