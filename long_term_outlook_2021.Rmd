@@ -600,7 +600,7 @@ master_df %>%
   filter(scenario == c("High Oil and Gas Supply", "Low Oil and Gas Supply", "Reference")) %>%
   ggplot(aes(x = date, y = value, color = scenario)) +
   geom_line() + 
-  labs(x = "Year", y = master_df$units[1], title = "US Commercial Sector Emissions", 
+  labs(x = "Year", y = master_df$units[1], title = "US Commercial Sector CO2 Emissions", 
        subtitle = NULL)
 
 # want to see how per capita emissions will be affected on a case by case basis
