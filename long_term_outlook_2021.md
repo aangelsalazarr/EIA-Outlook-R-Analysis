@@ -724,3 +724,17 @@ master_df %>%
 ```
 
 ![](long_term_outlook_2021_files/figure-gfm/plot%20fuel%20emissions%20based%20on%20economic%20growth-1.png)<!-- -->
+
+``` r
+master_df %>%
+  filter(str_detect(name, "Natural Gas|Petroleum|Coal")) %>%
+  ggplot(aes(x = date, y = value, color = scenario)) +
+  geom_line() +
+  facet_wrap(vars(sector), scales = "free") +
+  labs(x = "Year", y = master_df$units, 
+       title = "US CO2 Emissions by Fuel Type", 
+       subtitle = "Various Scenarios", 
+       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
+```
+
+![](long_term_outlook_2021_files/figure-gfm/plot%20fuel%20emissions%20by%20scenario-1.png)<!-- -->

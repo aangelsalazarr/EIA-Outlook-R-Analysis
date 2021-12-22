@@ -625,7 +625,6 @@ merging_scenarios <- list(a_merged, b_merged, c_merged, d_merged, e_merged,
 master_df <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), merging_scenarios)
 
 
-
 ```
 
 ```{r visualizing our new master df, fig.width=9}
@@ -712,6 +711,18 @@ master_df %>%
   labs(x = "Date", y = master_df$units,
        title = "US CO2 Emissions by Fuel Type", 
        subtitle = "Economic Growth Scenarios",
+       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
+```
+
+```{r plot fuel emissions by scenario, fig.width=10}
+master_df %>%
+  filter(str_detect(name, "Natural Gas|Petroleum|Coal")) %>%
+  ggplot(aes(x = date, y = value, color = scenario)) +
+  geom_line() +
+  facet_wrap(vars(sector), scales = "free") +
+  labs(x = "Year", y = master_df$units, 
+       title = "US CO2 Emissions by Fuel Type", 
+       subtitle = "Various Scenarios", 
        caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
 ```
 
