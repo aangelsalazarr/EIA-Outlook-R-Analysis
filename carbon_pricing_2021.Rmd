@@ -1,0 +1,55 @@
+---
+title: "Carbon Pricing"
+author: "Angel Salazar"
+date: "12/22/2021"
+output: github_document
+---
+
+```{r importing carbon price data}
+# importing packages to be able to plot the data
+library(ggplot2)
+library(tidyr)
+library(tidyverse)
+library(dplyr)
+library(ggstance)
+library(ggthemes)
+
+# import excel into r
+carbon_price <- read.csv("carbon_pricing_2021.csv")
+
+```
+
+
+```{r plotting carbon prices for 2021, fig.height=10, fig.width=10}
+# subsetting to get rid of past carbon prices
+current_prices <- subset(carbon_price, select = c(Name.of.the.initiative, 
+                                                  Instrument.Type, 
+                                                  Jurisdiction.Covered, 
+                                                  Price_rate_1_2021))
+
+# now removing all rows with N/A value
+current_prices <- current_prices[!(current_prices$Price_rate_1_2021 == "N/A"),]
+
+# converting price columns to integers
+current_prices$Price_rate_1_2021 <- as.integer(current_prices$Price_rate_1_2021)
+
+# checking if our N/A rows were dropped
+head(current_prices)
+
+# plotting our data
+current_prices %>%
+  drop_na(Price_rate_1_2021) %>%
+  filter(Price_rate_1_2021 > 0) %>%
+  ggplot(aes(x = Price_rate_1_2021, 
+             y = Name.of.the.initiative)) +
+  geom_barh(stat="identity") +
+  labs(x = "US$ / tCO2e", y = NULL, 
+       title = "Prices in Implemented Carbon Pricing Initiatives", 
+       caption = "Source: The World Bank, Carbon Pricing Dashboard") +
+    scale_x_continuous(breaks = scales::pretty_breaks(n = 15)) +
+  theme_economist() + scale_color_economist()
+
+
+
+```
+

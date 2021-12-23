@@ -21,6 +21,13 @@ library(rjson)
 library(dplyr)
 library(tidyverse)
 library(reshape2)
+
+# allows us to export editable graphs for powerpoint
+library(here)
+library(glue)
+library(officer)
+library(rvg)
+library(viridis)
 ```
 
 ```{r gathering emissions data for reference case}
@@ -627,7 +634,7 @@ master_df <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), merging_sc
 
 ```
 
-```{r visualizing our new master df, fig.width=9}
+```{r visualizing our new master df, fig}
 # lets first visualize emissions by sector and facet wrap scenario
 tokens <- c("Commercial", "Industrial", "Residential", "Capita")
 
@@ -682,7 +689,8 @@ master_df %>%
   scale_x_date(breaks = scales::pretty_breaks(n = 10)) + 
   labs(x = "Year", y = "MMmtCO2/capita", title = "US Per-Capita CO2 Emissions", 
        subtitle = "Various Scenarios", 
-       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
+       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021", 
+       color = "Economic Scenarios")
 ```
 
 
