@@ -1,0 +1,49 @@
+---
+title: "Emissions Data Global"
+author: "Angel Salazar"
+date: "12/22/2021"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(tidyr)
+library(tidyverse)
+library(dplyr)
+
+# loading in our excel dataframe
+emissions <- read.csv("carbon_market_analysis/data_emissions.csv")
+
+# we want to tidy our data because it is easy to read but not easy to analyze
+# in essence, we will store all year col names under year and all associated values
+# to percent
+# note we exclude any cols that are not years
+emissions_pivot <- emissions %>%
+  pivot_longer(cols = -c(X, X.1), names_to = "year", values_to = "percent") 
+
+# now we want to drop the x infront of our year values
+emissions_pivot$year <- substring(emissions_pivot$year, 2)
+
+# need to change year to date value from character
+emissions_pivot$year <- as.Date(emissions_pivot$year, "%Y")
+
+# need to drop % sign from percent cols
+emissions_pivot$percent <- substring(emissions_pivot$percent, 1, 4)
+
+# need to convert percent values to integers
+emissions_pivot$percent <- as.numeric(emissions_pivot$percent)
+
+```
+
+```{r visualizing our data, fig.height=6}
+emissions_pivot %>%
+  filter(year >= as.Date("1990-01-01")) %>%
+  ggplot(aes(x = year, y = percent)) +
+  geom_col(fill = "darkred") +
+  labs(x = "Year of Implementation", 
+       y = "% of Annual Global GHG Emissions", 
+       title = "Share of Global GHG Emissions Covered", 
+       caption = "The World Bank, Carbon Pricing Dashboard")
+
+```
+
