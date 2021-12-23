@@ -634,7 +634,7 @@ master_df <- Reduce(function(x, y, ...) merge(x, y, all = TRUE, ...), merging_sc
 
 ```
 
-```{r visualizing our new master df, fig}
+```{r visualizing our new master df, fig.width=15, fig.height=10}
 # lets first visualize emissions by sector and facet wrap scenario
 tokens <- c("Commercial", "Industrial", "Residential", "Capita")
 
@@ -694,10 +694,22 @@ master_df %>%
 ```
 
 
-```{r visualizing sector emissions based on economic growth, fig.width = 9}
+```{r visualizing sector emissions based on economic growth, fig.width = 20, fig.height=15}
 master_df %>%
   filter(str_detect(name, "Commercial|Industrial|Residential|Transportation")) %>%
   filter(scenario == c("High Economic Growth", "Low Economic Growth", "Reference")) %>%
+  ggplot(aes(x = date, y = value, color = scenario)) +
+  geom_line() +
+  facet_wrap(vars(sector)) +
+  theme(legend.position = "bottom") +
+  labs(x = "Date", y = master_df$units,
+       title = "US Sector CO2 Emissions", 
+       subtitle = "Economic Growth Scenarios",
+       caption = "Source: Energy Information Administration (EIA), Annual Energy Outlook 2021")
+
+# now plotting all scenarios
+master_df %>%
+  filter(str_detect(name, "Commercial|Industrial|Residential|Transportation")) %>%
   ggplot(aes(x = date, y = value, color = scenario)) +
   geom_line() +
   facet_wrap(vars(sector)) +
